@@ -1,0 +1,58 @@
+AllCops:
+  Include:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'lib/**/*'
+  Exclude:
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
+
+Style/Encoding:
+  Enabled: true
+
+# Necessary to YARD ignore `frozen_string_literal` magic comments
+Style/EmptyLines:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/EachWithObject:
+  Enabled: false
+
+Style/NumericLiteralPrefix:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Max: 170
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ModuleLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/**/*'
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+    - 'spec/**/*'
+
+Style/Encoding:
+  Enabled: false
