@@ -8,6 +8,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'bcrypt'
 gem 'figaro'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov', require: false, group: :test
   gem 'yard'
+  gem 'factory_girl_rails'
 end
 
 group :development do
