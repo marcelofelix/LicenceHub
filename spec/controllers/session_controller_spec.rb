@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe SessionController, type: :controller do
@@ -9,7 +10,7 @@ RSpec.describe SessionController, type: :controller do
   end
 
   it 'test that invalid email and password show error' do
-    user = create(:user, email: 'teste@teste.com', password: 'teste')
+    create(:user, email: 'teste@teste.com', password: 'teste')
     post :create, params: { email: 'x', password: 'x' }
     expect(response).to redirect_to home_index_path
     expect(flash[:error]).to match('Usuário ou senha invalido')

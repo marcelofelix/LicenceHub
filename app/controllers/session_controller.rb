@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+#
+# Controller responsible to manage the user session
 class SessionController < ApplicationController
-
   def create
     user = User.find_by_email(email) unless email.empty?
     if user&.authenticate(password)
