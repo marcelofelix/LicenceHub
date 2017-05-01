@@ -1,6 +1,8 @@
 *.rbc
 capybara-*.html
 .rspec
+.yardoc/checksums
+.yardoc/objects/root.dat
 /log
 /doc
 /tmp
