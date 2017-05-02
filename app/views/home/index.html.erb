@@ -1,12 +1,12 @@
-<% if loged? %>
+<% if current_user.logged? %>
   <h1>Ola <%= current_user.name %></h1>
 <% end %>
 
-<% if loged? %>
+<% if current_user.logged? %>
   <%= link_to 'Sair', '/logout', method: :delete %>
 <% end %>
 
-<% unless loged? %>
+<% unless current_user.logged? %>
   <div class="login">
     <%= form_tag '/login' do %>
       <div>

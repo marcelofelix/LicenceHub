@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
   include AuthenticationHelper
 
-  before_action :authorize
   protect_from_forgery with: :exception
 
   def append_info_to_payload(payload)
@@ -15,6 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to '/' unless current_user
+    redirect_to '/' unless current_user.logged?
   end
 end

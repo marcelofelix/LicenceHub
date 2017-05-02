@@ -1,0 +1,5 @@
+<%= form_for @service do |f| %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.select :periodicity, periodicity %>
+  <%= f.submit 'Salvar' %>
+<% end %>

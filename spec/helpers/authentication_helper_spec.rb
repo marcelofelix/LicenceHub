@@ -21,14 +21,4 @@ RSpec.describe AuthenticationHelper, type: :helper do
   it 'test that before login current user is GuestUser' do
     expect(helper.current_user).to be_a GuestUser
   end
-
-  it 'test that GuestUser is not loged' do
-    expect(helper.loged?).to be false
-  end
-
-  it 'test that User is loged' do
-    user = create(:user)
-    session[:user_id] = user.id
-    expect(helper.loged?).to be true
-  end
 end
