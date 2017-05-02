@@ -1,5 +1,17 @@
 <%= form_for @service do |f| %>
-  <%= f.text_field :name, autofocus: true %>
-  <%= f.select :periodicity, periodicity %>
-  <%= f.submit 'Salvar' %>
+  <div class="form-group">
+    <label for="name" class="form-label">Nome</label>
+    <div class="form-control">
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="periodicity" class="form-label">Periodicidade</label>
+    <div class="form-control">
+      <%= f.select :periodicity, periodicity %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'Salvar' %>
+  </div>
 <% end %>
