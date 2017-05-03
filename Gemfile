@@ -27,6 +27,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-remote'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'simplecov', require: false, group: :test
   gem 'yard'
