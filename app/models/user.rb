@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 #
-# User is the heavier user of LicenceHub, they are who will
-# handle all Client's requisitions.
+# As Companies can provide services to each other
+# the users of this Companies are who execute and who
+# ask for Services
 #
-# A User belongs to a Company and can  provide services only for clients
-# of this Company.
-#
-# The password of user is stored using 'bcrypt' into database
 class User < ApplicationRecord
+  validates :name, length: { minimum: 3, maximum: 100 }
+  validates :email, length: { minimum: 3, maximum: 100 }
   has_secure_password
-  belongs_to :company
+  belongs_to :account
 
   def logged?
     true

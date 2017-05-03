@@ -5,5 +5,5 @@
 class Service < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
   validates :periodicity, presence: true
-  belongs_to :company
+  belongs_to :account
 end
