@@ -7,7 +7,7 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service
-                .where(company: current_user.company)
+                .where(account: current_user.account)
                 .paginate(page: params[:page])
                 .order(:name)
   end
@@ -18,7 +18,7 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new(service_params)
-    @service.company = current_user.company
+    @service.account = current_user.account
     @service.save
     redirect_to services_path
   end
