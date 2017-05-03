@@ -1,0 +1,8 @@
+pt:
+  activerecord:
+    errors:
+      messages:
+        blank: 'Campo é obrigatório'
+        too_short: 'Campo deve ter no minimo %{count} letras'
+        too_long: 'Campo deve ter no máximo %{count} letras'
+

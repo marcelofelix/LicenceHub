@@ -1,21 +1,25 @@
-<% if loged? %>
+<% if current_user.logged? %>
   <h1>Ola <%= current_user.name %></h1>
 <% end %>
 
-<% if loged? %>
+<% if current_user.logged? %>
   <%= link_to 'Sair', '/logout', method: :delete %>
 <% end %>
 
-<% unless loged? %>
+<% unless current_user.logged? %>
   <div class="login">
     <%= form_tag '/login' do %>
-      <div>
-        <label for="email">Usuário</label>
-        <%= text_field_tag :email %>
+      <div class="form-group">
+        <label for="email" class="form-label">Usuário</label>
+        <div class="form-control">
+          <%= text_field_tag :email %>
+        </div>
       </div>
-      <div>
-        <label for="password">Senha</label>
-        <%= password_field_tag :password %>
+      <div class="form-group">
+        <label for="password" class="form-label">Senha</label>
+        <div class="form-control">
+          <%= password_field_tag :password %>
+        </div>
       </div>
       <div><%= flash[:error] %></div>
       <div><%= submit_tag 'Entrar' %></div>
