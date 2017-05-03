@@ -5,6 +5,22 @@
 # configure the type of Services a Company provide
 # and how they work
 #
+# An Account can be one of three rules
+#
+# :manager - Are accounts that manage the App
+# :provider - Are account that provide services to anothers accounts
+# :client - Are account that ask for services to another account
+
+# And account can alson have a parent account, an account :client should
+# have a account provider as parent and one accont :provider should have a
+# accont :manager as parent.
+
+# One accont parent is for who you will pay for some service
+# :client pay to :provider by services that a :provider provide
+# :provider pay to :manager to use the App
 class Account < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
+  validates :rule, inclusion: { in: %w(client provider manager) }
+  has_many :accounts
+  belongs_to :account, optional: true, foreign_key: :parent_id
 end

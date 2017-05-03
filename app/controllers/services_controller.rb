@@ -19,8 +19,11 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     @service.account = current_user.account
-    @service.save
-    redirect_to services_path
+    if @service.save
+      redirect_to services_path
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -29,7 +32,7 @@ class ServicesController < ApplicationController
 
   def update
     @service = Service.find(params[:id])
-    if @service.update service_params
+    if @service.update(service_params)
       redirect_to services_path
     else
       render 'edit'
