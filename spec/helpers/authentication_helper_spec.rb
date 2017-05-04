@@ -14,7 +14,7 @@ require 'rails_helper'
 RSpec.describe AuthenticationHelper, type: :helper do
   it 'test that current_user comes from session user_id' do
     user = create(:user)
-    session[:user_id] = user.id
+    login(user)
     expect(helper.current_user).to eq user
   end
 

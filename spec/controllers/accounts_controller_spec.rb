@@ -1,7 +1,7 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe AccountsController, type: :controller do
-
   let(:user) { create(:user, account: create(:account_manager)) }
 
   it 'test list accounts' do
@@ -13,7 +13,6 @@ RSpec.describe AccountsController, type: :controller do
   end
 
   it 'test create account' do
-    binding.pry
     login(user)
 
     post :create, params: {

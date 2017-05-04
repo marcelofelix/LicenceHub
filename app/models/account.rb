@@ -20,14 +20,21 @@
 # :provider pay to :manager to use the App
 class Account < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
-  # validates :rule, inclusion: { in: %w(client provider manager) }
+  validates :rule, inclusion: { in: %w(client provider manager) }
   has_many :accounts
   belongs_to :parent, optional: true, foreign_key: :parent_id, class_name: Account
-  enum rule: [:client, :provider, :manager]
 
   def add_account(account)
     account.parent = self
-    account.rule = :provider if provider?
-    account.rule = :client if self.rule == :provider.to_s
+    account.rule = :provider if manager?
+    account.rule = :client if provider?
+  end
+
+  def provider?
+    rule == :provider.to_s
+  end
+
+  def manager?
+    rule == :manager.to_s
   end
 end
