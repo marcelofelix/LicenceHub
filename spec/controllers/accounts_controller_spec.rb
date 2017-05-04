@@ -7,6 +7,7 @@ RSpec.describe AccountsController, type: :controller do
   it 'test list accounts' do
     login(user)
     expect(Account).to receive(:where).with(parent: user.account)
+      .and_call_original
 
     get :index
     expect(response).to be_success

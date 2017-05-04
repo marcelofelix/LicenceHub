@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170503113018) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name",       null: false
+    t.string   "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "rule",       null: false

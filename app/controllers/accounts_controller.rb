@@ -5,7 +5,6 @@ class AccountsController < ApplicationController
   before_action :authorize
 
   def index
-    @accounts = Account.where(parent: current_user.account)
     @accounts = Account
                 .where(parent: current_user.account)
                 .paginate(page: params[:page])
