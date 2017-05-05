@@ -2,22 +2,18 @@
 #
 FactoryGirl.define do
   sequence :account do |n|
-    "Account #{n}"
+    n
   end
 
-  factory :account do
-    name { generate(:account) }
-    rule :client
+  factory :manager do
+    name { "Manager #{generate(:account)}" }
+  end
 
-    trait :provider do
-      rule :provider
-    end
+  factory :provider do
+    name { "Provider #{generate(:account)}" }
+  end
 
-    trait :manager do
-      rule :manager
-    end
-
-    factory :account_provider, traits: [:provider]
-    factory :account_manager, traits: [:manager]
+  factory :client do
+    name { "Client #{generate(:account)}" }
   end
 end

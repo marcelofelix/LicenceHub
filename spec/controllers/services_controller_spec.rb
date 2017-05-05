@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe ServicesController, type: :controller do
   it 'test list services filtered by logged user account' do
     user = create(:user)
-    create_list(:service, 2, account: create(:account))
+    create_list(:service, 2, account: create(:client))
     create_list(:service, 3, account: user.account)
 
     expect(Service).to receive(:where).with(account: user.account).and_call_original
@@ -57,7 +57,7 @@ RSpec.describe ServicesController, type: :controller do
     user = create(:user)
     service = create(:service, name: 'alvara', account: user.account)
     login(user)
-    get :update, params: {
+    put :update, params: {
       id: service.id,
       service: { id: service.id, name: 'Alvara', periodicity: :daily }
     }

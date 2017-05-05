@@ -5,7 +5,7 @@
 # configure the type of Services a Company provide
 # and how they work
 #
-# An Account can be one of three rules
+# An Account can be one of three types
 #
 # :manager - Are accounts that manage the App
 # :provider - Are account that provide services to anothers accounts
@@ -20,21 +20,10 @@
 # :provider pay to :manager to use the App
 class Account < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
-  validates :rule, inclusion: { in: %w(client provider manager) }
   has_many :accounts
   belongs_to :parent, optional: true, foreign_key: :parent_id, class_name: Account
 
-  def add_account(account)
-    account.parent = self
-    account.rule = :provider if manager?
-    account.rule = :client if provider?
-  end
-
-  def provider?
-    rule == :provider.to_s
-  end
-
-  def manager?
-    rule == :manager.to_s
+  def add_account(**opts)
+    throw :not_implemented
   end
 end

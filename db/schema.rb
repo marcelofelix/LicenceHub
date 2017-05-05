@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20170503113018) do
     t.string   "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "rule",       null: false
     t.integer  "parent_id"
   end
 
