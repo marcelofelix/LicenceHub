@@ -4,7 +4,6 @@
 # the users of this Companies are who execute and who
 # ask for Services
 #
-binding.pry
 class User < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
   validates :email, length: { minimum: 3, maximum: 100 }
