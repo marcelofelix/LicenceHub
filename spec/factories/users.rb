@@ -2,7 +2,14 @@
 FactoryGirl.define do
   factory :user do
     name 'Marcelo'
-    account
+    association :account, factory: :provider
+    password '123456'
+    email { "#{name.downcase}@#{account.name}.com" }
+  end
+
+  factory :client_user, class: User do
+    name 'Marcelo'
+    association :account, factory: :client
     password '123456'
     email { "#{name.downcase}@#{account.name}.com" }
   end

@@ -2,5 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'test that Account do not implement add_account' do
+    expect{ subject.add_account({}) }.to throw_symbol :not_implemented
+  end
 end

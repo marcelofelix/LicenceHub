@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501114837) do
+ActiveRecord::Schema.define(version: 20170503113018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name",       null: false
+    t.string   "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "parent_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170501114837) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "accounts", "accounts", column: "parent_id"
   add_foreign_key "companies", "accounts"
   add_foreign_key "services", "accounts"
   add_foreign_key "users", "accounts"

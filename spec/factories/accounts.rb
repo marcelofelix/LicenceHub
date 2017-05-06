@@ -2,10 +2,18 @@
 #
 FactoryGirl.define do
   sequence :account do |n|
-    "Account #{n}"
+    n
   end
 
-  factory :account do
-    name { generate(:account) }
+  factory :manager do
+    name { "Manager #{generate(:account)}" }
+  end
+
+  factory :provider do
+    name { "Provider #{generate(:account)}" }
+  end
+
+  factory :client do
+    name { "Client #{generate(:account)}" }
   end
 end

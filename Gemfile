@@ -27,6 +27,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-remote'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'simplecov', require: false, group: :test
   gem 'yard'
@@ -42,6 +43,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-commands-rspec'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
