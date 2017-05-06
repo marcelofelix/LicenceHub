@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <div>
+      <%= link_to 'Services', services_path %>
+      <%= link_to 'Usuários', users_path %>
+      <%= link_to 'Sair', '/logout', method: :delete if current_user.logged?%>
+      <%= link_to 'Entrar', '/' unless current_user.logged?%>
+    </div>
     <%= yield %>
   </body>
 </html>

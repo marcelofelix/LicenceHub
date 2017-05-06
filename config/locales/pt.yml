@@ -1,6 +1,11 @@
 pt:
   activerecord:
     errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: 'Email já foi utilizado'
       messages:
         blank: 'Campo é obrigatório'
         too_short: 'Campo deve ter no minimo %{count} letras'
