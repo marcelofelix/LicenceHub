@@ -23,7 +23,7 @@ class Account < ApplicationRecord
   has_many :accounts
   belongs_to :parent, optional: true, foreign_key: :parent_id, class_name: Account
 
-  def add_account(**opts)
+  def add_account(**_opts)
     throw :not_implemented
   end
 end

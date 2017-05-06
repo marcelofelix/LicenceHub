@@ -4,7 +4,7 @@
 # to ask for service to Providers
 # Client can not have children accounts
 class Client < Account
-  def add_account(params)
+  def add_account(_params)
     throw :client_can_not_have_another_counts
   end
 end

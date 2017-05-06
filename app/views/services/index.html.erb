@@ -1,7 +1,9 @@
-<%= link_to 'Novo', new_service_path %>
-<ul>
-  <% @services.each do |s| %>
-    <li><%= link_to s.name, edit_service_path(s) %></li>
-  <% end %>
-</ul>
-<%= will_paginate @services %>
+<div>
+  <%= link_to 'Novo', new_service_path %>
+  <ul>
+    <% @services.each do |s| %>
+      <li><%= link_to s.name, edit_service_path(s) %></li>
+    <% end %>
+  </ul>
+  <%= will_paginate @services %>
+</div>

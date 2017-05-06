@@ -1,0 +1,31 @@
+<div>
+  <%= form_for @user do |t| %>
+    <div class="form-group">
+      <label class="form-label" for="name">Nome</label>
+      <div class="form-control">
+        <%= t.text_field :name, autofocus: true %>
+      </div>
+      <span><%= @user.errors[:name]&.first %></span>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="email">Email</label>
+      <div class="form-control">
+        <%= t.email_field :email %>
+      </div>
+      <span><%= @user.errors[:email]&.first %></span>
+    </div>
+    <% unless @user.id %>
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div class="form-control">
+          <%= t.password_field :password %>
+        </div>
+        <span><%= @user.errors[:password]&.first %></span>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= t.submit 'Salvar' %>
+    </div>
+  <% end %>
+  <%= link_to 'Voltar', users_path %>
+</div>

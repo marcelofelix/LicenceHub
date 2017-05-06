@@ -83,7 +83,7 @@ RSpec.describe AccountsController, type: :controller do
 
     put :update, params: {
       id: account.id,
-      account: { name: nil}
+      account: { name: nil }
     }
     expect(response).to render_template 'edit'
   end
