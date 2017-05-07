@@ -23,14 +23,6 @@ ActiveRecord::Schema.define(version: 20170503113018) do
     t.integer  "parent_id"
   end
 
-  create_table "companies", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "account_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_companies_on_account_id", using: :btree
-  end
-
   create_table "services", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "periodicity", null: false
@@ -38,6 +30,14 @@ ActiveRecord::Schema.define(version: 20170503113018) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["account_id"], name: "index_services_on_account_id", using: :btree
+  end
+
+  create_table "unities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_unities_on_account_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170503113018) do
   end
 
   add_foreign_key "accounts", "accounts", column: "parent_id"
-  add_foreign_key "companies", "accounts"
   add_foreign_key "services", "accounts"
+  add_foreign_key "unities", "accounts"
   add_foreign_key "users", "accounts"
 end

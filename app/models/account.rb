@@ -20,7 +20,7 @@
 # :provider pay to :manager to use the App
 class Account < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
-  has_many :accounts
+  has_many :accounts, foreign_key: :parent_id
   belongs_to :parent, optional: true, foreign_key: :parent_id, class_name: Account
 
   def add_account(**_opts)

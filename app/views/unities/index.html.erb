@@ -1,0 +1,11 @@
+<div>
+  <%= link_to 'Novo', new_unity_path %>
+  <%= form_tag unities_path, method: :get do %>
+    <%= select_accounts(account_id) %>
+  <% end %>
+  <ul>
+    <% @unities.each do |u| %>
+      <li><%= link_to u.name, edit_unity_path(u) %></li>
+    <% end %>
+  </ul>
+</div>
