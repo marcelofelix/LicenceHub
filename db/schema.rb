@@ -10,49 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503113018) do
+ActiveRecord::Schema.define(version: 20170501114837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
+  create_table "clients", force: :cascade do |t|
     t.string   "name",       null: false
-    t.string   "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "parent_id"
   end
 
   create_table "services", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "periodicity", null: false
-    t.integer  "account_id",  null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["account_id"], name: "index_services_on_account_id", using: :btree
   end
 
   create_table "unities", force: :cascade do |t|
     t.string   "name",       null: false
-    t.integer  "account_id", null: false
+    t.integer  "client_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_unities_on_account_id", using: :btree
+    t.index ["client_id"], name: "index_unities_on_client_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false
-    t.integer  "account_id",      null: false
+    t.integer  "client_id",       null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["account_id"], name: "index_users_on_account_id", using: :btree
+    t.index ["client_id"], name: "index_users_on_client_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
-  add_foreign_key "accounts", "accounts", column: "parent_id"
-  add_foreign_key "services", "accounts"
-  add_foreign_key "unities", "accounts"
-  add_foreign_key "users", "accounts"
+  add_foreign_key "unities", "clients"
+  add_foreign_key "users", "clients"
 end

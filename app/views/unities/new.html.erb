@@ -8,11 +8,11 @@
       <span><%= @unity.errors[:name]&.first %></span>
     </div>
     <div class="form-group">
-      <label class="form-label" for="account">Client</label>
+      <label class="form-label" for="client_id">Client</label>
       <div class="form-control">
-        <%= select_tag :account_id, account_options %>
+        <%= select_tag :client_id, client_options %>
       </div>
-      <span><%= @unity.errors[:account]&.first %></span>
+      <span><%= @unity.errors[:client]&.first %></span>
     </div>
     <div class="form-group">
       <%= t.submit 'Salvar' %>

@@ -1,7 +1,0 @@
-<%= link_to 'Novo', new_account_path %>
-<ul>
-  <% @accounts.each do |a| %>
-    <li><%= link_to a.name, edit_account_path(a) %></li>
-  <% end %>
-</ul>
-<%= will_paginate @accounts %>

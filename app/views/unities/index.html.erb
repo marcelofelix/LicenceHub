@@ -1,7 +1,7 @@
 <div>
   <%= link_to 'Novo', new_unity_path %>
   <%= form_tag unities_path, method: :get do %>
-    <%= select_accounts(account_id) %>
+    <%= select_clients(client_id) %>
   <% end %>
   <ul>
     <% @unities.each do |u| %>

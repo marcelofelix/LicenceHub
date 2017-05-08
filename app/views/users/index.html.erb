@@ -1,5 +1,8 @@
 <div>
   <%= link_to 'Novo', new_user_path %>
+  <%= form_tag users_path, method: :get do %>
+    <%= select_clients(client_id) %>
+  <% end %>
   <ul>
     <% @users.each do |u| %>
       <li><%= link_to u.name, edit_user_path(u) %></li>

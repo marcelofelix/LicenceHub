@@ -1,9 +1,9 @@
-<%= form_for @account do |f| %>
+<%= form_for @client do |f| %>
   <div class="form-group">
     <label for="name" class="form-label">Nome</label>
     <div class="form-control">
       <%= f.text_field :name, autofocus: true %>
-      <%= @account.errors[:name]&.first %>
+      <%= @client.errors[:name]&.first %>
     </div>
   </div>
   <div class="form-group">

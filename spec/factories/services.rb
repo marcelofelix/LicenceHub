@@ -7,6 +7,5 @@ FactoryGirl.define do
   factory :service do
     name { generate(:service) }
     periodicity :monthly
-    association :account, factory: :provider
   end
 end

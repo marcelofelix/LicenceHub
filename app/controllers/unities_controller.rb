@@ -2,15 +2,11 @@
 #
 # Handle unity's crud request
 class UnitiesController < ApplicationController
+  include ClientsHelper
+
   def index
     @unities = []
-    @unities = Unity.by_account(account) if account
-  end
-
-  def account_id
-    value = params[:account_id]
-    return nil if value&.empty?
-    value
+    @unities = Unity.where(client: client) if client
   end
 
   def new
@@ -19,7 +15,7 @@ class UnitiesController < ApplicationController
 
   def create
     @unity = Unity.new(unity_params)
-    @unity.account = account
+    @unity.client = client
     if @unity.save
       redirect_to unities_path
     else
@@ -27,13 +23,7 @@ class UnitiesController < ApplicationController
     end
   end
 
-  helper_method :account_id
-
   private
-
-  def account
-    @account ||= Account.find(account_id) if account_id
-  end
 
   def unity_params
     params.require(:unity).permit(:name)

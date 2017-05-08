@@ -1,0 +1,7 @@
+<%= link_to 'Novo', new_client_path %>
+<ul>
+  <% @clients.each do |a| %>
+    <li><%= link_to a.name, edit_client_path(a) %></li>
+  <% end %>
+</ul>
+<%= will_paginate @clients %>

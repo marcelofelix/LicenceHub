@@ -6,9 +6,5 @@
 #
 class Unity < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
-  belongs_to :account
-
-  def self.by_account(account)
-    Unity.where(account: account)
-  end
+  belongs_to :client
 end

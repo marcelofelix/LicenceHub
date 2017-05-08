@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 #
-# Client is a type of Account and is who use LicenceHub
-# to ask for service to Providers
-# Client can not have children accounts
-class Client < Account
-  def add_account(_params)
-    throw :client_can_not_have_another_counts
-  end
+# Client is who ask for Services that should be done by
+# their Unities
+class Client < ApplicationRecord
+  validates :name, length: { minimum: 3, maximum: 100 }
 end

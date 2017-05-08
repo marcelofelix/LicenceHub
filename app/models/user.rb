@@ -9,13 +9,9 @@ class User < ApplicationRecord
   validates :email, length: { minimum: 3, maximum: 100 }
   validates :email, uniqueness: true
   has_secure_password
-  belongs_to :account
+  belongs_to :client
 
   def logged?
     true
-  end
-
-  def self.by_account(account)
-    User.where(account: account)
   end
 end

@@ -2,12 +2,11 @@
 require 'rails_helper'
 
 RSpec.describe ServicesController, type: :controller do
-  it 'test list services filtered by logged user account' do
+  it 'test list services filtered by logged user client' do
     user = create(:user)
-    create_list(:service, 2, account: create(:client))
-    create_list(:service, 3, account: user.account)
+    create_list(:service, 3)
 
-    expect(Service).to receive(:where).with(account: user.account).and_call_original
+    expect(Service).to receive(:paginate).and_call_original
     login(user)
     get :index
     expect(response).to be_success
@@ -46,7 +45,7 @@ RSpec.describe ServicesController, type: :controller do
 
   it 'test go edit a service' do
     user = create(:user)
-    service = create(:service, name: 'alvara', account: user.account)
+    service = create(:service, name: 'alvara')
     login(user)
     expect(Service).to receive(:find).with(service.id.to_s)
     get :edit, params: { id: service.id }
@@ -55,7 +54,7 @@ RSpec.describe ServicesController, type: :controller do
 
   it 'test update a service' do
     user = create(:user)
-    service = create(:service, name: 'alvara', account: user.account)
+    service = create(:service, name: 'alvara')
     login(user)
     put :update, params: {
       id: service.id,
@@ -68,7 +67,7 @@ RSpec.describe ServicesController, type: :controller do
 
   it 'test that update service with invalid values do not redirect to index' do
     user = create(:user)
-    service = create(:service, name: 'alvara', account: user.account)
+    service = create(:service, name: 'alvara')
     login(user)
     get :update, params: {
       id: service.id,

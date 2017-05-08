@@ -2,10 +2,12 @@
 #
 # Crud of users
 class UsersController < ApplicationController
+  include ClientsHelper
   before_action :authorize
 
   def index
-    @users = User.by_account(current_user.account)
+    @users = []
+    @users = User.where(client: client) if client
   end
 
   def new
@@ -13,14 +15,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id], account: current_user.account)
-    redirect_to users_path unless @user
-    render 'edit' if @user
+    @user = User.find(params[:id])
   end
 
   def create
     @user = User.new(user_params)
-    @user.account = current_user.account
+    @user.client = client
     if @user.save
       redirect_to users_path
     else
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id], account: current_user.account)
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to users_path
     else
