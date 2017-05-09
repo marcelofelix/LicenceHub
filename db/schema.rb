@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501114837) do
+ActiveRecord::Schema.define(version: 20170509114021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20170501114837) do
     t.string   "periodicity", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "services_unities", id: false, force: :cascade do |t|
+    t.integer "unity_id",   null: false
+    t.integer "service_id", null: false
+    t.index ["service_id", "unity_id"], name: "index_services_unities_on_service_id_and_unity_id", using: :btree
+    t.index ["unity_id", "service_id"], name: "index_services_unities_on_unity_id_and_service_id", using: :btree
   end
 
   create_table "unities", force: :cascade do |t|

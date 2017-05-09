@@ -7,4 +7,5 @@
 class Unity < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 100 }
   belongs_to :client
+  has_and_belongs_to_many :services
 end

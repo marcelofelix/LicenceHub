@@ -30,6 +30,7 @@ class UnitiesController < ApplicationController
   def update
     @unity = Unity.find(params[:id])
     if @unity.update(unity_params)
+      @unity.services << services
       redirect_to unities_path
     else
       render 'edit'
@@ -40,5 +41,11 @@ class UnitiesController < ApplicationController
 
   def unity_params
     params.require(:unity).permit(:name)
+  end
+
+  def services
+    ids = params[:service_ids]
+    @services ||= Service.where(id: ids) if ids
+    @services || []
   end
 end
