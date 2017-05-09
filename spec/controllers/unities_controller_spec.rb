@@ -40,4 +40,35 @@ RSpec.describe UnitiesController, type: :controller do
       expect(response).to render_template('new')
     end
   end
+
+  describe 'update' do
+    it 'test that after success redirect to index' do
+      user = login create(:user)
+      unity = create(:unity, name: 'Old name')
+      post :update, params: {
+        id: unity.id,
+        unity: {
+          name: 'New Name'
+        }
+      }
+
+      expect(response).to redirect_to unities_path
+      unity.reload
+      expect(unity.name).to eq 'New Name'
+    end
+
+
+    it 'test that if fail to update stay at sabe page' do
+      user = login create(:user)
+      unity = create(:unity, name: 'Old name')
+      post :update, params: {
+        id: unity.id,
+        unity: {
+          name: nil
+        }
+      }
+
+      expect(response).to render_template('edit')
+    end
+  end
 end

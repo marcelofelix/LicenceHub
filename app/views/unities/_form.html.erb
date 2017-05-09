@@ -1,0 +1,21 @@
+<div>
+  <%= form_for @unity do |t| %>
+    <div class="form-group">
+      <label class="form-label" for="name">Nome</label>
+      <div class="form-control">
+        <%= t.text_field :name, autofocus: true %>
+      </div>
+      <span><%= @unity.errors[:name]&.first %></span>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="client_id">Client</label>
+      <div class="form-control">
+        <%= select_tag :client_id, client_options %>
+      </div>
+      <span><%= @unity.errors[:client]&.first %></span>
+    </div>
+    <div class="form-group">
+      <%= t.submit 'Salvar' %>
+    </div>
+  <% end %>
+</div>

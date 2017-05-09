@@ -23,6 +23,19 @@ class UnitiesController < ApplicationController
     end
   end
 
+  def edit
+    @unity = Unity.find(params[:id])
+  end
+
+  def update
+    @unity = Unity.find(params[:id])
+    if @unity.update(unity_params)
+      redirect_to unities_path
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def unity_params
