@@ -9,6 +9,10 @@ class UnitiesController < ApplicationController
     @unities = Unity.where(client: client) if client
   end
 
+  def show
+    @unity = Unity.find_by(id: params[:id], client: current_user)
+  end
+
   def new
     @unity = Unity.new
   end
@@ -30,7 +34,6 @@ class UnitiesController < ApplicationController
   def update
     @unity = Unity.find(params[:id])
     if @unity.update(unity_params)
-      @unity.services << services
       redirect_to unities_path
     else
       render 'edit'
@@ -41,11 +44,5 @@ class UnitiesController < ApplicationController
 
   def unity_params
     params.require(:unity).permit(:name)
-  end
-
-  def services
-    ids = params[:service_ids]
-    @services ||= Service.where(id: ids) if ids
-    @services || []
   end
 end

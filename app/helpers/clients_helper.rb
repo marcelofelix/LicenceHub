@@ -4,7 +4,9 @@
 module ClientsHelper
   def select_clients(value = nil)
     values = client_options(value)
-    select_tag(:client_id, values, prompt: 'Selecione um', onchange: 'this.form.submit();')
+    select_tag(:client_id, values, prompt: 'Selecione um',
+               onchange: 'this.form.submit();',
+              class: 'form-control')
   end
 
   def client_options(value = nil)

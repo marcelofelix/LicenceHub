@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :services
   resources :clients
   resources :users
-  resources :unities
+  resources :unities do
+    resources :orders, shallow: true
+  end
 
   post '/login', to: 'session#create'
   delete '/logout', to: 'session#destroy'

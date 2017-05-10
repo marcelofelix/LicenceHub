@@ -1,0 +1,9 @@
+<%= form_for [@unity, @order] do |f| %>
+  <div class="form-group">
+    <label class="form-label">Serviço</label>
+    <%= f.select :service_id, service_options, {}, { class: 'form-control' } %>
+  </div>
+  <div>
+    <%= f.submit 'Salvar' %>
+  </div>
+<% end %>
