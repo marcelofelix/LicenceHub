@@ -1,16 +1,12 @@
 <%= form_for @service do |f| %>
   <div class="form-group">
     <label for="name" class="form-label">Nome</label>
-    <div class="form-control">
-      <%= f.text_field :name, autofocus: true %>
-      <%= @service.errors[:name]&.first %>
-    </div>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+    <%= @service.errors[:name]&.first %>
   </div>
   <div class="form-group">
     <label for="periodicity" class="form-label">Periodicidade</label>
-    <div class="form-control">
-      <%= f.select :periodicity, periodicity %>
-    </div>
+    <%= f.select :periodicity, periodicity, {}, { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.submit 'Salvar' %>

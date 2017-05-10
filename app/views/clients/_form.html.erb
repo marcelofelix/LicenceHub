@@ -1,10 +1,8 @@
 <%= form_for @client do |f| %>
   <div class="form-group">
     <label for="name" class="form-label">Nome</label>
-    <div class="form-control">
-      <%= f.text_field :name, autofocus: true %>
-      <%= @client.errors[:name]&.first %>
-    </div>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+    <%= @client.errors[:name]&.first %>
   </div>
   <div class="form-group">
     <%= f.submit 'Salvar' %>
