@@ -4,6 +4,7 @@
     <%= f.select :service_id, service_options, {}, { class: 'form-control' } %>
   </div>
   <div>
-    <%= f.submit 'Salvar' %>
+    <%= link_to 'Cancelar', unity_path(@unity), class: 'btn btn-danger' %>
+    <%= f.submit 'Salvar', class: 'btn btn-primary' %>
   </div>
 <% end %>

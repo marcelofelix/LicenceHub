@@ -22,7 +22,7 @@
         <span><%= @user.errors[:password]&.first %></span>
       </div>
     <% end %>
-    <%= link_to 'Voltar', users_path, class: 'btn btn-danger' %>
+    <%= link_to 'Cancelar', users_path, class: 'btn btn-danger' %>
     <%= t.submit 'Salvar', class: 'btn btn-primary'%>
   <% end %>
 </div>

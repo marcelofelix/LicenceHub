@@ -9,8 +9,8 @@
   <% @unity.orders.each do |o| %>
     <tr>
       <td><%= o.service.name %></td>
-      <td><%= o.created_at %></td>
-      <td><%= o.valid_until %></td>
+      <td><%= o.created_at.to_formatted_s(:human) %></td>
+      <td><%= o.valid_until.to_formatted_s(:human) %></td>
     </tr>
   <% end %>
 </table>

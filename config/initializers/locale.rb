@@ -6,3 +6,6 @@ I18n.available_locales = [:en, :pt]
 
 # Set default locale to something other than :en
 I18n.default_locale = :pt
+
+Time::DATE_FORMATS[:human] = '%d/%m/%y'
+Date::DATE_FORMATS[:human] = '%d/%m/%y'
