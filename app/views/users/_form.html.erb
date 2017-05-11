@@ -1,10 +1,12 @@
 <div>
   <%= form_for @user do |t| %>
-    <div class="form-group">
-      <label class="form-label" for="client_id">Cliente</label>
-      <%= select_tag :client_id, client_options, { class: 'form-control' } %>
-      <span><%= @user.errors[:client]&.first %></span>
-    </div>
+    <% if provider %>
+      <div class="form-group">
+        <label class="form-label" for="client_id">Cliente</label>
+        <%= select_tag :client_id, client_options, { class: 'form-control' } %>
+        <span><%= @user.errors[:client]&.first %></span>
+      </div>
+    <% end %>
     <div class="form-group">
       <label class="form-label" for="name">Nome</label>
       <%= t.text_field :name, autofocus: true, class: 'form-control' %>

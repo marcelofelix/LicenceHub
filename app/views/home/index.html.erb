@@ -9,7 +9,7 @@
         <%= form_tag '/login' do %>
           <div class="form-group">
             <label for="email" class="form-label">Usuário</label>
-            <%= text_field_tag :email, nil, class: 'form-control'%>
+            <%= text_field_tag :email, nil, class: 'form-control', autofocus: true%>
           </div>
           <div class="form-group">
             <label for="password" class="form-label">Senha</label>

@@ -16,9 +16,11 @@ ActiveRecord::Schema.define(version: 20170510012559) do
   enable_extension "plpgsql"
 
   create_table "clients", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                       null: false
+    t.boolean  "provider",   default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["provider"], name: "index_clients_on_provider", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -47,12 +49,13 @@ ActiveRecord::Schema.define(version: 20170510012559) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.integer  "client_id",       null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "name",                                    null: false
+    t.string   "email",                                   null: false
+    t.string   "password_digest",                         null: false
+    t.string   "role",            default: "client_user", null: false
+    t.integer  "client_id",                               null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.index ["client_id"], name: "index_users_on_client_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end

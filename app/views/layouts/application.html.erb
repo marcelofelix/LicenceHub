@@ -13,10 +13,14 @@
       <div class="navbar navbar-default">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><%= link_to 'Serviços', services_path %></li>
+            <% if provider %>
+              <li><%= link_to 'Clientes', clients_path %></li>
+              <li><%= link_to 'Serviços', services_path %></li>
+            <% end %>
             <li><%= link_to 'Usuários', users_path %></li>
-            <li><%= link_to 'Unidades', unities_path %></li>
-            <li><%= link_to 'Clientes', clients_path %></li>
+            <% unless provider %>
+              <li><%= link_to 'Unidades', unities_path %></li>
+            <% end %>
             <li><%= link_to 'Sair', '/logout', method: :delete if current_user.logged?%></li>
             <li><%= link_to 'Entrar', '/' unless current_user.logged?%></li>
           </ul>

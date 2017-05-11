@@ -5,4 +5,8 @@ class GuestUser
   def logged?
     false
   end
+
+  def provider
+    false
+  end
 end

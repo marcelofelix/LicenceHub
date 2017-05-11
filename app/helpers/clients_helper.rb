@@ -14,7 +14,12 @@ module ClientsHelper
   end
 
   def client
-    @client ||= Client.find(client_id) if client_id
+    if provider
+      @client ||= Client.find(client_id) if client_id
+    else
+      @client ||= current_user.client
+    end
+    @client
   end
 
   def client_id

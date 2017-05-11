@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.string :email, null: false
       t.string :password_digest, null: false
+      t.string :role, null: false, default: :client_user
       t.belongs_to :client, foreign_key: true, index: true, null: false
       t.timestamps
       t.index :email, unique: true
