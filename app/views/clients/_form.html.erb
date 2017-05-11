@@ -5,6 +5,7 @@
     <%= @client.errors[:name]&.first %>
   </div>
   <div class="form-group">
-    <%= f.submit 'Salvar' %>
+    <%= link_to 'Cancelar', clients_path, class: 'btn btn-danger' %>
+    <%= f.submit 'Salvar', class: 'btn btn-primary' %>
   </div>
 <% end %>

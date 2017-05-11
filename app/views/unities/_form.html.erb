@@ -11,6 +11,7 @@
       <span><%= @unity.errors[:client]&.first %></span>
     </div>
     <div class="form-group">
+      <%= link_to 'Cancelar', unities_path, class: 'btn btn-danger' %>
       <%= t.submit 'Salvar', class: 'btn btn-primary' %>
     </div>
   <% end %>
