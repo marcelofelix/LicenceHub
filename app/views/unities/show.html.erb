@@ -1,0 +1,19 @@
+<label class="form-label">Name</label>
+<span><%= @unity.name %></span>
+<table class="table">
+  <tr>
+    <th>Documento</th>
+    <th>Data</th>
+    <th>Vencimento</th>
+  </tr>
+  <% @unity.orders.each do |o| %>
+    <tr>
+      <td><%= o.service.name %></td>
+      <td><%= o.created_at.to_formatted_s(:human) %></td>
+      <td><%= o.valid_until.to_formatted_s(:human) %></td>
+    </tr>
+  <% end %>
+</table>
+<div>
+  <%= link_to 'Novo', new_unity_order_path(@unity), class: 'btn btn-primary' %>
+</div>

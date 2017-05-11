@@ -2,31 +2,17 @@
   <%= form_for @unity do |t| %>
     <div class="form-group">
       <label class="form-label" for="name">Nome</label>
-      <div class="form-control">
-        <%= t.text_field :name, autofocus: true %>
-      </div>
+      <%= t.text_field :name, autofocus: true, class: 'form-control' %>
       <span><%= @unity.errors[:name]&.first %></span>
     </div>
     <div class="form-group">
       <label class="form-label" for="client_id">Client</label>
-      <div class="form-control">
-        <%= select_tag :client_id, client_options %>
-      </div>
+      <%= select_tag :client_id, client_options, { class: 'form-control' } %>
       <span><%= @unity.errors[:client]&.first %></span>
     </div>
     <div class="form-group">
-      <label class="form-label" for="client_id">Serviços</label>
-      <ul>
-        <% Service.all.each do |s| %>
-          <li>
-            <%= check_box_tag 'service_ids[]', s.id, @unity.services.include?(s) %>
-            <%= s.name %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="form-group">
-      <%= t.submit 'Salvar' %>
+      <%= link_to 'Cancelar', unities_path, class: 'btn btn-danger' %>
+      <%= t.submit 'Salvar', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

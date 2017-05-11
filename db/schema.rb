@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509114021) do
+ActiveRecord::Schema.define(version: 20170510012559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,18 +21,21 @@ ActiveRecord::Schema.define(version: 20170509114021) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.date     "valid_until", null: false
+    t.integer  "unity_id",    null: false
+    t.integer  "service_id",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["service_id"], name: "index_orders_on_service_id", using: :btree
+    t.index ["unity_id"], name: "index_orders_on_unity_id", using: :btree
+  end
+
   create_table "services", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "periodicity", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "services_unities", id: false, force: :cascade do |t|
-    t.integer "unity_id",   null: false
-    t.integer "service_id", null: false
-    t.index ["service_id", "unity_id"], name: "index_services_unities_on_service_id_and_unity_id", using: :btree
-    t.index ["unity_id", "service_id"], name: "index_services_unities_on_unity_id_and_service_id", using: :btree
   end
 
   create_table "unities", force: :cascade do |t|
@@ -54,6 +57,8 @@ ActiveRecord::Schema.define(version: 20170509114021) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "orders", "services"
+  add_foreign_key "orders", "unities"
   add_foreign_key "unities", "clients"
   add_foreign_key "users", "clients"
 end

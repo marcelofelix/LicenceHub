@@ -9,14 +9,20 @@
   </head>
 
   <body>
-    <div>
-      <%= link_to 'Services', services_path %>
-      <%= link_to 'Usuários', users_path %>
-      <%= link_to 'Unidades', unities_path %>
-      <%= link_to 'Clientes', clients_path %>
-      <%= link_to 'Sair', '/logout', method: :delete if current_user.logged?%>
-      <%= link_to 'Entrar', '/' unless current_user.logged?%>
+    <div class="container-fluid">
+      <div class="navbar navbar-default">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Serviços', services_path %></li>
+            <li><%= link_to 'Usuários', users_path %></li>
+            <li><%= link_to 'Unidades', unities_path %></li>
+            <li><%= link_to 'Clientes', clients_path %></li>
+            <li><%= link_to 'Sair', '/logout', method: :delete if current_user.logged?%></li>
+            <li><%= link_to 'Entrar', '/' unless current_user.logged?%></li>
+          </ul>
+        </div>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>
