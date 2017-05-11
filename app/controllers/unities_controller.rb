@@ -3,6 +3,7 @@
 # Handle unity's crud request
 class UnitiesController < ApplicationController
   include ClientsHelper
+  before_action :authorize
 
   def index
     @unities = []
@@ -10,7 +11,8 @@ class UnitiesController < ApplicationController
   end
 
   def show
-    @unity = Unity.find_by(id: params[:id], client: current_user)
+    @unity = Unity.find_by(id: params[:id], client: client)
+    redirect_to_index unless @unity
   end
 
   def new
@@ -28,7 +30,8 @@ class UnitiesController < ApplicationController
   end
 
   def edit
-    @unity = Unity.find(params[:id])
+    @unity = Unity.find_by(id: params[:id])
+    redirect_to_index unless @unity
   end
 
   def update
@@ -44,5 +47,10 @@ class UnitiesController < ApplicationController
 
   def unity_params
     params.require(:unity).permit(:name)
+  end
+
+  def redirect_to_index
+    flash[:error] = 'Unidade inválida'
+    redirect_to unities_path
   end
 end

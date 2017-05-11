@@ -16,6 +16,30 @@ RSpec.describe UnitiesController, type: :controller do
     expect(response).to be_success
   end
 
+  it 'test show unity' do
+    user = login create(:user)
+    unity = create(:unity)
+
+    expect(Unity).to receive(:find_by)
+      .with(id: unity.id.to_s, client: unity.client)
+      .and_call_original
+
+    get :show, params: {
+      id: unity.id,
+      client_id: unity.client.id
+    }
+    expect(response).to be_success
+  end
+
+  it 'test that show invalid unity redirect to unities' do
+    user = login create(:user)
+    unity = create(:unity)
+
+    get :show, params: { id: unity.id }
+    expect(response).to redirect_to unities_path
+    expect(flash[:error]).to be 'Unidade inválida'
+  end
+
   describe 'create unity' do
     it 'test that when success redirect to unities' do
       user = login(create(:user))

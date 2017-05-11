@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   include ServicesHelper
+  before_action :authorize
 
   def new
     @unity = Unity.find(params[:unity_id])
