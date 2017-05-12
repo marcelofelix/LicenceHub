@@ -4,6 +4,7 @@
 class UnitiesController < ApplicationController
   include ClientsHelper
   before_action :authorize
+  layout 'logged'
 
   def index
     @unities = []

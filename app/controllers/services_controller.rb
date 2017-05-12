@@ -4,6 +4,7 @@
 # Just users should be able to call this controller
 class ServicesController < ApplicationController
   before_action :authorize
+  layout 'logged'
 
   def index
     @services = Service
