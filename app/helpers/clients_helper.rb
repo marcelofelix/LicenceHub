@@ -23,8 +23,6 @@ module ClientsHelper
   end
 
   def client_id
-    value = params[:client_id]
-    return nil if value&.empty?
-    value
+    params[:client_id]
   end
 end

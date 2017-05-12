@@ -32,7 +32,6 @@ class UnitiesController < ApplicationController
   def edit
     @unity = Unity.find_by(id: params[:id], client: client)
     redirect_to_index unless @unity
-    redirect_to_index unless @unity
   end
 
   def update

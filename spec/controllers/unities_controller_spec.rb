@@ -18,10 +18,10 @@ RSpec.describe UnitiesController, type: :controller do
 
   it 'test show unity' do
     user = login create(:user)
-    unity = create(:unity)
+    unity = create(:unity, client: user.client)
 
     expect(Unity).to receive(:find_by)
-      .with(id: unity.id.to_s, client: unity.client)
+      .with(id: unity.id.to_s, client: user.client)
       .and_call_original
 
     get :show, params: {
@@ -58,7 +58,7 @@ RSpec.describe UnitiesController, type: :controller do
       login(create(:user))
       post :create, params: {
         unity: {
-          name: 'Unidade SP'
+          name: nil
         }
       }
       expect(response).to render_template('new')
@@ -94,5 +94,13 @@ RSpec.describe UnitiesController, type: :controller do
 
       expect(response).to render_template('edit')
     end
+  end
+
+  it 'test that try to edit a invalid unity redirect to index with error' do
+      user = login create(:user)
+      get :edit, params: { id: 12 }
+
+      expect(response).to redirect_to unities_path
+      expect(flash[:error]).to eq 'Unidade inválida'
   end
 end

@@ -6,4 +6,8 @@ RSpec.describe GuestUser, type: :model do
     user = GuestUser.new
     expect(user.logged?).to be_falsey
   end
+
+  it 'test that guest user is not a provider' do
+    expect(subject.provider).to be_falsey
+  end
 end
