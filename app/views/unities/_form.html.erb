@@ -6,11 +6,6 @@
       <span><%= @unity.errors[:name]&.first %></span>
     </div>
     <div class="form-group">
-      <label class="form-label" for="client_id">Client</label>
-      <%= select_tag :client_id, client_options, { class: 'form-control' } %>
-      <span><%= @unity.errors[:client]&.first %></span>
-    </div>
-    <div class="form-group">
       <%= link_to 'Cancelar', unities_path, class: 'btn btn-danger' %>
       <%= t.submit 'Salvar', class: 'btn btn-primary' %>
     </div>

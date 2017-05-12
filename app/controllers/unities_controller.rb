@@ -4,10 +4,11 @@
 class UnitiesController < ApplicationController
   include ClientsHelper
   before_action :authorize
+  layout 'logged'
 
   def index
     @unities = []
-    @unities = Unity.where(client: client) if client
+    @unities = Unity.where(client: client)
   end
 
   def show
@@ -30,7 +31,7 @@ class UnitiesController < ApplicationController
   end
 
   def edit
-    @unity = Unity.find_by(id: params[:id])
+    @unity = Unity.find_by(id: params[:id], client: client)
     redirect_to_index unless @unity
   end
 

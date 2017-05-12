@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   include ServicesHelper
   before_action :authorize
+  layout 'logged'
 
   def new
     @unity = Unity.find(params[:unity_id])

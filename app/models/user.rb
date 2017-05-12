@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def logged?
     true
   end
+
+  def provider
+    client.provider
+  end
 end

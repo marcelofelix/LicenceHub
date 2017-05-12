@@ -6,6 +6,11 @@ FactoryGirl.define do
   end
 
   factory :client do
-    name { "Manager #{generate(:client)}" }
+    name { "Client #{generate(:client)}" }
+  end
+
+  factory :provider, class: Client do
+    name { "Provider #{generate(:client)}" }
+    provider true
   end
 end

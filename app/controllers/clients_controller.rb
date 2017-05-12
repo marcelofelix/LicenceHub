@@ -3,6 +3,7 @@
 # Controller to handle requisitions about client
 class ClientsController < ApplicationController
   before_action :authorize
+  layout 'logged'
 
   def index
     @clients = Client

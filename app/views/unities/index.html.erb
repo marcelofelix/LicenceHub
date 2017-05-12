@@ -1,8 +1,5 @@
 <div>
   <%= link_to 'Novo', new_unity_path %>
-  <%= form_tag unities_path, method: :get do %>
-    <%= select_clients(client_id) %>
-  <% end %>
   <ul>
     <% @unities.each do |u| %>
       <li><%= link_to u.name, unity_path(u) %></li>

@@ -1,7 +1,9 @@
 <div>
   <%= link_to 'Novo', new_user_path %>
-  <%= form_tag users_path, method: :get do %>
-    <%= select_clients(client_id) %>
+  <% if provider %>
+    <%= form_tag users_path, method: :get do %>
+      <%= select_clients(client_id) %>
+    <% end %>
   <% end %>
   <ul>
     <% @users.each do |u| %>
